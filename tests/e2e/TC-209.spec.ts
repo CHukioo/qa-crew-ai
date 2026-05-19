@@ -20,16 +20,16 @@ test.describe('TC-209: Dropdown Visibility and Options Verification', () => {
     // Expected: Page loads successfully
     await page.goto('https://blazedemo.com/');
 
-    // Step 2: Locate the departure city drop down
-    // Expected: Departure city drop down is visible on the page
+    // Step 2: Locate the departure city dropdown
+    // Expected: Departure city dropdown is visible on the page
     const departureSelect = page.locator('select[name="fromPort"]');
     await expect(departureSelect).toBeVisible();
 
-    // Step 3: Click on the departure city dropdown to expand options
-    // Expected: Dropdown options include at least: Paris, Philadelphia, Boston
-    const departureOptions = departureselect.locator('option');
+    // Step 3: Verify dropdown options include at least: Paris, Philadelphia, Boston
+    // Expected: Dropdown options are displayed including the expected cities
+    const departureOptions = departureSelect.locator('option');
     const departureTexts = await departureOptions.allTextContents();
-    expect(departureTexts).toEqual(expect.arrayContaining('Paris'));
+    expect(departureTexts).toContain('Paris');
     expect(departureTexts).toContain('Philadelphia');
     expect(departureTexts).toContain('Boston');
 
@@ -38,13 +38,12 @@ test.describe('TC-209: Dropdown Visibility and Options Verification', () => {
     const destinationSelect = page.locator('select[name="toPort"]');
     await expect(destinationSelect).toBeVisible();
 
-    // Step 5: Click on the destination city dropdown to expand options
-    // Expected: Dropdown options include at least: Buenos Aires, Buenos Aires, Rome, London
-    const destinationOptions = letionSelect.locator('option');
+    // Step 5: Verify dropdown options include at least: Buenos Aires, Rome, London
+    // Expected: Dropdown options are displayed including the expected cities
+    const destinationOptions = destinationSelect.locator('option');
     const destinationTexts = await destinationOptions.allTextContents();
     expect(destinationTexts).toContain('Buenos Aires');
     expect(destinationTexts).toContain('Rome');
-    expect(destinationTexts).toContain('London'); });
-
-});
+    expect(destinationTexts).toContain('London');
+  });
 });
