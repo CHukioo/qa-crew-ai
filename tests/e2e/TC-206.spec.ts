@@ -33,8 +33,9 @@ test.describe('TC-206: Navigation Bar Verification', () => {
 
     // Step 4: Verify the 'home' link is present in the navigation bar
     // Expected: 'home' link is visible and clickable in the navigation bar
-    const homeLink = navBarlocator('a:has-text("Home")');
+    const homeLink = navBar.locator('a:has-text("Home")');
     await expect(homeLink).toBeVisible();
     await expect(homeLink).toBeEnabled();
-    await expect(homeLink).toHaveAttribute('href', '/'); });
+    await expect(homeLink).toHaveAttribute('href', '/');
+  });
 });
