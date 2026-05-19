@@ -19,18 +19,18 @@ test.describe('[OP-13] Positive - Select all departure city combinations with Ro
     await page.goto('https://blazedemo.com/');
     await expect(page).toHaveURL('https://blazedemo.com/');
 
-    // --- First combination: Philadelphia → Rome ---
-    // Step 2: Select 'Philadelphia' from the departure dropdown
+    // --- First combination: Philadelphia to Rome ---
+    // Select 'Philadelphia' from the departure dropdown
     const departureDropdown = page.locator('select[name="fromPort"]');
     await departureDropdown.selectOption('Philadelphia');
     await expect(departureDropdown).toHaveValue('Philadelphia');
 
-    // Step 3: Select 'Rome' from the destination dropdown
+    // Select 'Rome' from the destination dropdown
     const destinationDropdown = page.locator('select[name="toPort"]');
     await destinationDropdown.selectOption('Rome');
     await expect(destinationDropdown).toHaveValue('Rome');
 
-    // Step 4: Click 'Find Flights' button
+    // Click 'Find Flights' button
     const findFlightsButton = page.locator('input[type="submit"][value="Find Flights"]');
     await findFlightsButton.click();
 
@@ -39,7 +39,8 @@ test.describe('[OP-13] Positive - Select all departure city combinations with Ro
     const pageBody = page.locator('body');
     await expect(pageBody).toContainText('Flight');
 
-    // Step 5: Return to homepage and repeat with Boston → Rome
+    // --- Second combination: Boston to Rome ---
+    // Return to homepage
     await page.goto('https://blazedemo.com/');
     await expect(page).toHaveURL('https://blazedemo.com/');
 
